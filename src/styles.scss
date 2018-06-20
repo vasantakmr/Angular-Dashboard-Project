@@ -7,6 +7,25 @@ body {
   height: 100vh;
 }
 
+header{
+    background: #2D2E2E;
+    color: #fff;
+    padding: 20px 20px 20px 20px;
+    #hi{
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 50%;
+        padding: 20px 10px;
+        -webkit-text-stroke-color: #fff;
+    }
+    #hi input[type=text] {
+        border: none;
+        font-size: 17px;
+    }
+}
+
+
 #container {
  display: grid;
  grid-template-columns: 260px auto;
@@ -17,21 +36,23 @@ body {
 
      ul {
          list-style-type: none;
-         margin:0;padding:0;
+         margin:0;
+         padding:0;
 
          li {
              background: #fff;
+             height: 20px;
              border-radius: 8px;
-             padding: 20px;
-             margin-bottom: 8px;
+             padding: 15px;
+             margin-bottom: 3px;
 
              a {
-                 font-size: 1.5em;
+                 font-size: 1.3em;
                  text-decoration: none;
                  font-weight: bold;
                  color:#00A8FF;
              }
-
+                          
              ul {
                  margin-top: 20px;
 
@@ -39,9 +60,10 @@ body {
                      padding:0;
 
                      a {
-                         font-size: 1em;
+                         font-size: 0.9em;
                          font-weight: 300;
                      }
+                     
                  }
              }
          }

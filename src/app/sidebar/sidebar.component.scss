@@ -12,18 +12,12 @@ nav {
       li {
 
           a.lis {
-
-            .text {
-              margin-top: 0px;
-              margin-left: 10px;
-            }
               color: #fff;
-              padding: 15px;
+              padding: 15px 20px;
               display: block;
               text-decoration: none;
-
-
             }
+          
           a:hover {
               background: darken(rgb(255, 0, 0), 37%);
               color: #fff;
@@ -31,8 +25,7 @@ nav {
           a.activated {
               background-color: #00a8ff;
           }
-
+          
       }
   }
-
 }

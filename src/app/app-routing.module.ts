@@ -6,10 +6,17 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { RequestsComponent } from './requests/requests.component';
 import { ReqdetailsComponent } from './reqdetails/reqdetails.component';
 import { ReportsComponent } from './reports/reports.component';
+import { ReturnsComponent } from './returns/returns.component';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: DashboardComponent
+  },
+  {
+    path: 'products',
     component: ProductsComponent
   },
   {
@@ -31,6 +38,14 @@ const routes: Routes = [
   {
     path: 'reports',
     component: ReportsComponent
+  },
+  {
+    path: 'returns',
+    component: ReturnsComponent
+  },
+  {
+    path: 'expenses',
+    component: ExpensesComponent
   },
 
 ];

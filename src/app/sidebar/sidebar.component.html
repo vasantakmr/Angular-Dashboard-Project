@@ -2,22 +2,37 @@
   <ul>
     <li>
       <a routerLink="" [class.activated]="currentUrl == '/'" class="lis">
-        <i class="material-icons">supervised_user_circle</i>  <span class="text">Dashboard</span>
+        <div class="text"> <i class="fas fa-address-book"></i> &nbsp; Dashboard</div>
+      </a>
+    </li>  
+    <li>
+      <a routerLink="products" [class.activated]="currentUrl == '/products'" class="lis">
+        <div class="text"> <i class="fas fa-address-book"></i> &nbsp; Products</div>
       </a>
     </li>
     <li>
+        <a routerLink="expenses" [class.activated]="currentUrl == '/expenses'" class="lis">
+          <div class="text"> <i class="fas fa-address-book"></i> &nbsp; Expenses</div>
+        </a>
+    </li>
+    <li>
         <a routerLink="orders" [class.activated]="currentUrl == '/orders'" class="lis">
-          <i class="material-icons">message</i>  <span class="text">Orders</span>
+           <div class="text"> <i class="fas fa-address-book"></i> &nbsp; Orders</div>
         </a>
     </li>
     <li>
         <a routerLink="requests" [class.activated]="currentUrl == '/requests'" class="lis">
-          <i class="material-icons">supervised_user_circle</i>  <span class="text">Requests</span>
+          <div class="text"> <i class="fas fa-address-book"></i> &nbsp; Requests</div>
         </a>
       </li>
       <li>
           <a routerLink="reports" [class.activated]="currentUrl == '/reports'" class="lis">
-            <i class="material-icons">message</i>   <span class="text">Reports</span>
+            <div class="text"> <i class="fas fa-address-book"></i> &nbsp; Reports</div>
+          </a>
+      </li>
+      <li>
+          <a routerLink="returns" [class.activated]="currentUrl == '/returns'" class="lis">
+            <div class="text"> <i class="fas fa-address-book"></i> &nbsp; Returns</div>
           </a>
       </li>
   </ul>

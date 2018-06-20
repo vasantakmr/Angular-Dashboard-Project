@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RequestsComponent } from './requests/requests.component';
 import { ReqdetailsComponent } from './reqdetails/reqdetails.component';
 import { ReportsComponent } from './reports/reports.component';
+import { ReturnsComponent } from './returns/returns.component';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { ReportsComponent } from './reports/reports.component';
     InvoiceComponent,
     RequestsComponent,
     ReqdetailsComponent,
-    ReportsComponent
+    ReportsComponent,
+    ReturnsComponent,
+    ExpensesComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
