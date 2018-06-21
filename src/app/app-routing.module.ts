@@ -9,6 +9,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { ReturnsComponent } from './returns/returns.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BookingsystemComponent} from './bookingsystem/bookingsystem.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'expenses',
     component: ExpensesComponent
+  },
+  {
+    path: 'booking',
+    component: BookingsystemComponent
   },
 
 ];

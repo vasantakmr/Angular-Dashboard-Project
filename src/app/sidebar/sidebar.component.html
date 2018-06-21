@@ -11,6 +11,11 @@
       </a>
     </li>
     <li>
+      <a routerLink="booking" [class.activated]="currentUrl == '/booking'" class="lis">
+        <div class="text"> <i class="fas fa-address-book"></i> &nbsp; Booking System</div>
+      </a>
+    </li>
+    <li>
         <a routerLink="expenses" [class.activated]="currentUrl == '/expenses'" class="lis">
           <div class="text"> <i class="fas fa-address-book"></i> &nbsp; Expenses</div>
         </a>

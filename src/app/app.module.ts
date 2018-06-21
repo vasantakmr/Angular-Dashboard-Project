@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { ReturnsComponent } from './returns/returns.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BookingsystemComponent } from './bookingsystem/bookingsystem.component';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReturnsComponent,
     ExpensesComponent,
     DashboardComponent,
+    BookingsystemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxDatatableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
