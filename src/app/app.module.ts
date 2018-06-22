@@ -18,6 +18,8 @@ import { ReturnsComponent } from './returns/returns.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookingsystemComponent } from './bookingsystem/bookingsystem.component';
+import { TableComponent } from './table/table.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { BookingsystemComponent } from './bookingsystem/bookingsystem.component'
     ExpensesComponent,
     DashboardComponent,
     BookingsystemComponent,
+    TableComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
