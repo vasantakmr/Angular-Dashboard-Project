@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestsComponent } from '../requests/requests.component';
 import { templateVisitAll } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -8,19 +8,18 @@ import { templateVisitAll } from '@angular/compiler';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  
-  
   rows = [];
 
   selected = [];
 
   columns: any[] = [
-    { prop: 'name'} , 
-    { name: 'Company' }, 
-    { name: 'Gender' }
-  ];
+    { prop: 'name'} ,
+    { name: 'Company' },
+    { name: 'Gender' },
+    { id : 'Amount ' }
 
-  constructor() {
+  ];
+  constructor(private router: Router) {
     this.fetch((data) => {
       this.selected = [data];
       this.rows = data;
@@ -38,10 +37,9 @@ export class TableComponent implements OnInit {
     req.send();
   }
 
-  onSelect({ selected }) {
-    console.log('Select Event', selected, this.selected);
-  }
-
+  detail(row: any) {
+    this.router.navigateByUrl('invoice/' + row.id);
+}
   onActivate(event) {
     console.log('Activate Event', event);
   }

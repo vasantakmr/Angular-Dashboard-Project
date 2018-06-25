@@ -6,12 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
   rows = [
     { name: 'Austin', gender: 'Male', company: 'Swimlane' },
     { name: 'Dany', gender: 'Male', company: 'KFC' },
@@ -22,4 +16,8 @@ export class ReportsComponent implements OnInit {
     { name: 'Gender' },
     { name: 'Company' }
   ];
+  constructor() { }
+
+  ngOnInit() {
+  }
 }
