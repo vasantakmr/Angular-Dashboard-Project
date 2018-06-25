@@ -1,0 +1,43 @@
+
+
+.btn {
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #000;
+	border: 2px solid #000;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	margin-top: 1em;
+	.price {
+		padding: 5px;
+		width: 100%;
+		position: relative;
+		transition: all 300ms ease;
+		.amount {
+			&:before {
+				content: "$";
+			}
+		}
+		&:before {
+			position: absolute;
+			content: "";
+			left: 0;
+			right: 0;
+			bottom: 0;
+			height: 0;
+			background-color: #000;
+			transition: height 300ms ease;
+			z-index: -1;
+		}
+	}
+	&:hover {
+		.price {
+			color: rgb(0, 0, 0);
+			&:before {
+				height: 100%;
+			}
+		}
+	}
+}

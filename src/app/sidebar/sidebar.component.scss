@@ -4,7 +4,7 @@ nav {
   background: #2D2E2E;
   height: 100%;
   position: fixed;
-
+  width: 15%;
   ul {
       list-style-type: none;
       padding: 0;
@@ -18,7 +18,7 @@ nav {
               display: block;
               text-decoration: none;
             }
-          
+
           a:hover {
               background: darken(rgb(255, 0, 0), 37%);
               color: #fff;
@@ -26,7 +26,7 @@ nav {
           a.activated {
               background-color: #267701;
           }
-          
+
       }
   }
 }

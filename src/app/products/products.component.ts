@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -35,14 +35,41 @@ import { trigger, style, transition, animate, keyframes, query, stagger } from '
 
 export class ProductsComponent implements OnInit {
 
-  products$: Object;
+  rows = [];
 
-  constructor(private data: DataService) { }
+  selected = [];
 
-  ngOnInit() {
-    this.data.getProducts().subscribe(
-      data => this.products$ = data
-    );
+  columns: any[] = [
+    { prop: 'name'} ,
+    { name: 'Company' },
+    { name: 'Gender' },
+    { id : 'Amount ' }
+
+  ];
+  constructor(private router: Router) {
+    this.fetch((data) => {
+      this.selected = [data];
+      this.rows = data;
+    });
   }
 
+  fetch(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `assets/company.json`);
+
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+
+    req.send();
+  }
+
+  detail(row: any) {
+    this.router.navigateByUrl('productdetails/' + row.id);
+}
+  onActivate(event) {
+    console.log('Activate Event', event);
+  }
+  ngOnInit() {
+  }
 }

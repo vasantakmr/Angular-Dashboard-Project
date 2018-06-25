@@ -1,12 +1,36 @@
 <h1>Products</h1>
 
-<ul [@listStagger]="products$">
-  <li *ngFor="let product of products$">
-    <a routerLink="/invoice/{{product.id}}">{{ product.name }}</a>
-
-    <ul>
-      <li>{{ product.email }}</li>
-      <li><a href="http://{{ product.website }}">{{ product.website }}</a></li>
-    </ul>
-  </li>
-</ul>
+<div>
+  <div style='float:left;width:100%'>
+    <ngx-datatable
+      style="width: 100%"
+      class="material"
+      [rows]="rows"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="'auto'"
+      [limit]="10"
+      [selected]="selected"
+      [selectionType]="'single'"
+      [selectAllRowsOnPage]="false"
+      (activate)="onActivate($event)">
+      <ngx-datatable-column name="Orderid"></ngx-datatable-column>
+      <ngx-datatable-column name="Customer Name"></ngx-datatable-column>
+      <ngx-datatable-column name="Products"></ngx-datatable-column>
+      <ngx-datatable-column name="Quantity"></ngx-datatable-column>
+      <ngx-datatable-column name="Amount"></ngx-datatable-column>
+      <ngx-datatable-column name="Rating"></ngx-datatable-column>
+      <ngx-datatable-column name="Gender"></ngx-datatable-column>
+      <ngx-datatable-column name="Company"></ngx-datatable-column>
+      <ngx-datatable-column name="id">
+        <ng-template let-column="column" ngx-datatable-header-template>
+            actions
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <button mat-button (click)="detail(row)">Invoice</button>
+        </ng-template>
+    </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
