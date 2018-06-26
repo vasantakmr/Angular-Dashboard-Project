@@ -11,6 +11,7 @@ import { ExpensesComponent } from './expenses/expenses.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookingsystemComponent} from './bookingsystem/bookingsystem.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { ReqformComponent } from './reqform/reqform.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'productdetails/:id',
     component: ProductdetailsComponent
+  },
+  {
+    path: 'reqform',
+    component: ReqformComponent
   },
 
 ];

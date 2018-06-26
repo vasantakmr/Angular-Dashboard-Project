@@ -1,61 +1,50 @@
-<mat-card class="cardclass">
-<h2 class="page-header">Raise a Request</h2>
-    
-    <form [formGroup]="requestForm" class="example-form">
-      <div formArrayName="itemRows">
-      
-<!--
-In the template we are iterating this formarray, 
-    and that is just the path to the formarray, which is:
-    
-    invoiceForm.controls.itemRows.controls
-    
-    'invoiceForm' being the complete form object, 'controls' being the content of the form object,
-    'itemRows' being the (form)array in the form, 'controls' being the content of the formarray.
+<div class="row">
+    <div class="col-sm-10" style=""><h1>REQUESTS</h1></div>
+    <div class="col-sm-2" style=" font-size: 15px;"><button mat-flat-button style="background:crimson;" (click)="navigate()">Raise a Request</button></div>
+  </div>
 
--->     <div class="row">
-    <div class="col-sm-11" style="background-color:lavender; align-items: center; padding: 5px;"><mat-form-field class="example-full-width">
-        <input matInput placeholder="Request Name" formControlName="itemn" >
-    </mat-form-field><br></div>
-    <div class="col-sm-1" style="background-color:lavender; align-items: center; padding: 5px;"><button mat-button type="button" (click)="addNewRow()" class="btn btn-primary">Add Product</button><br></div>
-    </div>
-        <div *ngFor="let itemrow of requestForm.controls.itemRows.controls; let i=index"  [formGroupName]="i">
-          <div class="form-group">
-
-            <div class="row">
-
-              <div class="col-sm-6" style="background-color:lavenderblush;"><mat-form-field class="example-full-width">
-                  <input matInput placeholder="{{ i + 1 }} Product Name" formControlName="itemname" >
-              </mat-form-field></div>
-              <div class="col-sm-5" ><mat-form-field class="example-full-width">
-                  <input matInput placeholder="Quantity" formControlName="itemnam" >
-              </mat-form-field></div>
-              <div class="col-sm-1" ><button mat-button *ngIf="requestForm.controls.itemRows.controls.length > 1" (click)="deleteRow(i)" >Delete</button>
-              </div>
-            </div>
-            
-          <br/>
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
   
-        </div>
-      </div>
-      <mat-form-field class="example-full-width">
-          <input matInput [matDatepicker]="picker" placeholder="Target Approval Date">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker touchUi="true" #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-          <textarea matInput placeholder="Description"></textarea>          
-        </mat-form-field> 
-      </div>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Estimated Cost" formControlName="cost" >
-          </mat-form-field>
-    </form>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Request ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+  
+      <!-- Progress Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Request Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Target Approval Date </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
 
-    <div class="row" style="padding: 10px 10px;">
-        <div class="col-sm-6" style="background-color:lavender;">.col-sm-4</div>
-        <div class="col-sm-1" style="background-color:lavenderblush;height: 15px;"><button mat-button>dummy</button></div>
-        <div class="col-sm-5" style="background-color:lavender;">.col-sm-4</div>
-      </div>
-  </mat-card>
-    <pre>{{requestForm.value | json}}</pre>
+      <!-- Color Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
+      </ng-container>
+  
+      
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  </div>
+  
