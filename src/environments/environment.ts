@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyB7TveUbN51hfhqtwGnOJvKzW647Qk_MW8",
+    authDomain: "twitterdemo-f5304.firebaseapp.com",
+    databaseURL: "https://twitterdemo-f5304.firebaseio.com",
+    projectId: "twitterdemo-f5304",
+    storageBucket: "twitterdemo-f5304.appspot.com",
+    messagingSenderId: "760853505310",
+  }
 };
 
 /*

@@ -62,7 +62,11 @@ import { HeaderComponent } from './header/header.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { BookingformComponent } from './bookingform/bookingform.component';
 import { ReqformComponent } from './reqform/reqform.component';
-
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { StudentService } from './student.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -139,9 +143,11 @@ import { ReqformComponent } from './reqform/reqform.component';
   MatToolbarModule,
   MatFormFieldModule,
   MatOptionModule,
-
   MatTooltipModule,
   MatTreeModule,
+  AngularFireModule.initializeApp(environment.firebase),
+AngularFirestoreModule.enablePersistence(),
+AngularFireDatabaseModule
   ],
   exports: [
     MatButtonModule,
@@ -197,8 +203,9 @@ import { ReqformComponent } from './reqform/reqform.component';
 
   MatTooltipModule,
   MatTreeModule,
+  
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

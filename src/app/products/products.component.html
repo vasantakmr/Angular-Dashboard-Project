@@ -1,43 +1,212 @@
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
-
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
-
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-    </ng-container>
-
-    <!-- Progress Column -->
-    <ng-container matColumnDef="progress">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
-      <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-    </ng-container>
-
-    <!-- Color Column -->
-    <ng-container matColumnDef="color">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
-      <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="actions"> 
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-      <td mat-cell *matCellDef="let row" ><button md-raised-button >Edit</button></td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
-    </tr>
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+<h2>Products</h2>
+<div class="row">
+  
+  <div class="col-sm-4" style="padding-top:10px;padding-bottom: 10px;">
+    <div style="background-color:white;">
+    <button mat-raised-button style="" (click)="navigate()"><i class="fas fa-file-export"></i>&nbsp;Export as CSV</button>
+    <button mat-raised-button style="" (click)="navigate()"><i class="fas fa-edit"></i>&nbsp;Edit</button>
+    <button mat-raised-button style="" (click)="navigate()"><i class="fas fa-trash"></i>&nbsp;Delete</button>
+    <button mat-raised-button style="" (click)="navigate()"><i class="fas fa-plus"></i>&nbsp;Add Product</button>
+    </div>
+  </div>
 </div>
+    <table>
+        <tr>
+            <td>
+                <mat-form-field class="demo-full-width">
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                </mat-form-field>
+            </td>
+            <td style="padding-left: 10px;">
+                <mat-form-field class="demo-full-width">
+                    <mat-select placeholder="Genre">
+                        <mat-option value="option">All</mat-option>
+                        <mat-option value="option">Pop</mat-option>
+                        <mat-option value="option">Rock</mat-option>
+                        <mat-option value="option">Classical</mat-option>
+                        <mat-option value="option">Hip-Hop</mat-option>
+                        <mat-option value="option">R & B</mat-option>
+                        <mat-option value="option">Country</mat-option>
+                        <mat-option value="option">Soul Music</mat-option>
+                        <mat-option value="option">EDM</mat-option>
+                      </mat-select>
+                </mat-form-field>
+            </td>
+            <td style="padding-left: 10px;">
+                <mat-form-field class="demo-full-width">
+                    <mat-select placeholder="Artist">
+                        <mat-option value="option">All</mat-option>
+                        <mat-option value="option">Adele</mat-option>
+                        <mat-option value="option">Bruno Mars</mat-option>
+                        <mat-option value="option">Chris Brown</mat-option>
+                        <mat-option value="option">Demi Lovato</mat-option>
+                        <mat-option value="option">Enrique Iglesias</mat-option>
+                        <mat-option value="option">Ellie Goulding</mat-option>
+                        <mat-option value="option">Eminem</mat-option>
+                        <mat-option value="option">Far East Movement</mat-option>
+                        <mat-option value="option">Kate Perry</mat-option>
+                        <mat-option value="option">Kendrick Lamar</mat-option>
+                        <mat-option value="option">Lady Gaga</mat-option>
+                        <mat-option value="option">Pitbull</mat-option>
+                        <mat-option value="option">Sam Smith</mat-option>
+                        <mat-option value="option">Sean Paul</mat-option>
+                      </mat-select>
+                </mat-form-field>
+            </td>
+            <td style="padding-left: 10px;">
+              <mat-form-field class="demo-full-width">
+                  <mat-select placeholder="Language">
+                      <mat-option value="option">All</mat-option>
+                      <mat-option value="option">English</mat-option>
+                      <mat-option value="option">Hindi</mat-option>
+                      <mat-option value="option">Spanish</mat-option>
+                      <mat-option value="option">Telugu</mat-option>
+                      <mat-option value="option">Tamil</mat-option>
+                    </mat-select>
+              </mat-form-field>
+          </td>
+            <td colspan="2" class="content-center" style="padding-left: 10px; padding-bottom: 10px;">
+                <button mat-raised-button color="accent">Search</button>
+            </td>
+        </tr>
+        <tr>
+            
+        </tr>
+    </table>
+      
+<mat-tab-group>
+  <mat-tab label="All"> <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+  
+      <!-- Progress Column -->
+      <ng-container matColumnDef="progress">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
+        <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+  
+      <!-- Color Column -->
+      <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
+        <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions"> 
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+        <td mat-cell *matCellDef="let row" ><button md-raised-button >Edit</button></td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  </div> </mat-tab>
+  <mat-tab label="In Stock"> <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+  
+      <!-- Progress Column -->
+      <ng-container matColumnDef="progress">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
+        <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+  
+      <!-- Color Column -->
+      <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
+        <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions"> 
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+        <td mat-cell *matCellDef="let row" ><button md-raised-button >Edit</button></td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  </div> </mat-tab>
+  <mat-tab label="Out of Stock"> <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+  
+      <!-- Progress Column -->
+      <ng-container matColumnDef="progress">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
+        <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+  
+      <!-- Color Column -->
+      <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
+        <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions"> 
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+        <td mat-cell *matCellDef="let row" ><button md-raised-button >Edit</button></td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  </div> </mat-tab>
+</mat-tab-group>
+
+

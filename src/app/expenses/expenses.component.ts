@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { StudentService } from '../student.service';
+
+import { AngularFirestore } from 'angularfire2/firestore';
+import {DataSource} from '@angular/cdk/collections';
+import { MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-expenses',
@@ -7,9 +13,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExpensesComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+    //@ViewChild(MatSort ) sort:MatSort;
+  
+  
+    studentDetails = {
+        studentName: '',
+        studentAge: '',
+        studentGrade: ''
+      }
+    
+      displayedColumns = ['Name', 'Age', 'Grade'];
+      dataSource = new StudentDataSource(this.student);
+    
+      constructor(private student: StudentService, private afs: AngularFirestore) {
+    
+      }
+    
+      addStudent() {
+        this.student.addStudent(this.studentDetails);
+      }
+      ngOnInit() {
+    }
+    }
+    
+    export class StudentDataSource extends DataSource<any> {
+    
+      constructor(private student: StudentService) {
+      super()
+      }
+    
+      connect() {
+        return this.student.getStudents();
+      }
+    
+      disconnect() {
+    
+      }
+    }
