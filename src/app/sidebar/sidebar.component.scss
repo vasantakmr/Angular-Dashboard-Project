@@ -1,6 +1,6 @@
 
 nav {
-  background: #2D2E2E;
+  background: rgb(255, 255, 255);
   height: 100%;
   position: fixed;
   width: 15%;
@@ -12,18 +12,23 @@ nav {
       li {
 
           a.lis {
-              color: #fff;
+              color: rgb(49, 49, 49);
               padding: 15px 20px;
               display: block;
+              font-family: 'Poppins', sans-serif;
+
               text-decoration: none;
             }
 
           a:hover {
-              background: darken(rgb(255, 0, 0), 37%);
-              color: #fff;
+            background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9); 
+            color: white;
           }
           a.activated {
-              background-color: #267701;
+            background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9);
+            color: white;
+            font-weight: bold;
+
           }
 
       }

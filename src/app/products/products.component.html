@@ -1,13 +1,11 @@
 <h2>Products</h2>
 <div class="row">
   
-  <div class="col-sm-4" style="padding-top:10px;padding-bottom: 10px;">
-    <div style="background-color:white;">
+  <div  style="padding: 10px 10px 10px 10px;">
     <button mat-raised-button style="" (click)="navigate()"><i class="fas fa-file-export"></i>&nbsp;Export as CSV</button>
     <button mat-raised-button style="" (click)="navigate()"><i class="fas fa-edit"></i>&nbsp;Edit</button>
     <button mat-raised-button style="" (click)="navigate()"><i class="fas fa-trash"></i>&nbsp;Delete</button>
     <button mat-raised-button style="" (click)="navigate()"><i class="fas fa-plus"></i>&nbsp;Add Product</button>
-    </div>
   </div>
 </div>
     <table>
@@ -131,7 +129,7 @@
   </div> </mat-tab>
   <mat-tab label="In Stock"> <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
-  
+
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
