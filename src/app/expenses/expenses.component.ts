@@ -14,8 +14,7 @@ import { MatSort } from '@angular/material';
 export class ExpensesComponent implements OnInit {
 
     //@ViewChild(MatSort ) sort:MatSort;
-  
-  
+
     studentDetails = {
         studentName: '',
         studentAge: '',

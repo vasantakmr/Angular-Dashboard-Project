@@ -16,23 +16,23 @@
       'itemRows' being the (form)array in the form, 'controls' being the content of the formarray.
   
   -->     <div class="row">
-      <div class="col-sm-11" style="background-color:lavender; align-items: center; padding: 5px;"><mat-form-field class="example-full-width">
+      <div class="col-sm-11" style="align-items: center; padding: 5px;"><mat-form-field class="example-full-width">
           <input matInput placeholder="Request Name" formControlName="itemn" >
       </mat-form-field><br></div>
-      <div class="col-sm-1" style="background-color:lavender; align-items: center; padding: 5px;"><button mat-button type="button" (click)="addNewRow()" class="btn btn-primary">Add Product</button><br></div>
+      <div class="col-sm-1" style=" align-items: center; padding: 5px;"><button mat-raised-button type="button" (click)="addNewRow()" class="btn btn-primary">Add Product</button><br></div>
       </div>
           <div *ngFor="let itemrow of requestForm.controls.itemRows.controls; let i=index"  [formGroupName]="i">
             <div class="form-group">
   
               <div class="row">
   
-                <div class="col-sm-6" style="background-color:lavenderblush;"><mat-form-field class="example-full-width">
+                <div class="col-sm-6" style=""><mat-form-field class="example-full-width">
                     <input matInput placeholder="{{ i + 1 }} Product Name" formControlName="itemname" >
                 </mat-form-field></div>
                 <div class="col-sm-5" ><mat-form-field class="example-full-width">
                     <input matInput placeholder="Quantity" formControlName="itemnam" >
                 </mat-form-field></div>
-                <div class="col-sm-1" ><button mat-button *ngIf="requestForm.controls.itemRows.controls.length > 1" (click)="deleteRow(i)" >Delete</button>
+                <div class="col-sm-1" ><button mat-raised-button *ngIf="requestForm.controls.itemRows.controls.length > 1" (click)="deleteRow(i)" >Delete</button>
                 </div>
               </div>
               
@@ -55,8 +55,8 @@
       </form>
   
       <div class="row" style="padding: 10px 10px;">
-          <div class="col-sm-6" style="background-color:lavender;">.col-sm-4</div>
-          <div class="col-sm-1" style="background-color:lavenderblush;height: 15px;"><button mat-button>dummy</button></div>
-          <div class="col-sm-5" style="background-color:lavender;">.col-sm-4</div>
+          <div class="col-sm-6" style=""></div>
+          <div class="col-sm-1" style="height: 15px;"><button mat-raised-button color=primary>Submit</button></div>
+          <div class="col-sm-5" style=""></div>
         </div>
     </mat-card>
